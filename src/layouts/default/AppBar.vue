@@ -20,6 +20,12 @@ const menuList = reactive([
       {type:'menu', title : 'vconsole', path: '/util/vconsole'},
     ],
     isLeaf: false,
+  },
+  { type: 'menu',
+    title: 'fileUpload',
+    path: '/fileUpload',
+    isLeaf: true,
+    children: [],
   }
 ]);
 const openMenus = ref([]); // 열려있는 메뉴들

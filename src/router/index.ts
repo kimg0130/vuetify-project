@@ -9,7 +9,14 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: DefaultLayout
+      component: DefaultLayout,
+      children: [
+        {
+          path: '/fileUpload',
+          name: 'fileUpload',
+          component: () => import('@/views/FileUpload.vue'),
+        }
+      ]
     },
     ...utilRoutes,
     ...sampleRoutes

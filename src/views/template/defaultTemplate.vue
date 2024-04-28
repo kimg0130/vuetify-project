@@ -1,9 +1,9 @@
 <script setup lang="ts">
-// 코드 스니핏 등록용 파일 - vueDefault
 // import -------------------------
 import {ref, onMounted, onUnmounted} from 'vue'
-// 전역변수 -------------------------------
+// variabled ------------------------
 const foo = ref<string>('foo');
+// function --------------------------
 function bar(){
   console.log('bar')
 }
@@ -18,10 +18,9 @@ onUnmounted(()=>{
 
 <template>
   <v-card>
-    <v-card-title>VConsole</v-card-title>
+    <v-card-title>타이틀</v-card-title>
     <v-card-text>
-      디바이스 inspect안할수있게 도와주는 vconsole 플러그인 <br />
-      main.js에 추가하면 전역으로 관리가능
+      설명 블라블라
     </v-card-text>
   </v-card>
 </template>

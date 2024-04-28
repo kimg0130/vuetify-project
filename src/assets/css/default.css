@@ -1,0 +1,12 @@
+.t-a-right{
+    text-align: right;
+}
+.t-a-left{
+    text-align: left;
+}
+.a-i-center{
+    align-items: center;
+}
+.img-fit img{
+    object-fit: cover;
+}
