@@ -1,6 +1,6 @@
 <template>
   <v-main>
-    <v-container>
+    <v-container class="h-100">
       <router-view />
     </v-container>
   </v-main>

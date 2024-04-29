@@ -1,17 +1,12 @@
 <script setup lang="ts">
 // import -------------------------
-import {ref, onMounted, onUnmounted} from 'vue'
+import {onBeforeUnmount} from 'vue'
 import VConsole from "vconsole";
 // -------------------------------
-const vconsole = ref<VConsole|null>(null);
+const vconsole =  new VConsole();
 // -------------------------------
-onMounted(()=>{
-  vconsole.value = new VConsole()
-});
-onUnmounted(()=>{
-  vconsole.value?.destroy();
-  vconsole.value = null;
-  console.log('vconsole unmounted')
+onBeforeUnmount(()=>{
+    vconsole.destroy();
 });
 </script>
 

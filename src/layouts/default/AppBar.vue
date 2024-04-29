@@ -26,6 +26,18 @@ const menuList = reactive([
     path: '/fileUpload',
     isLeaf: true,
     children: [],
+  },
+  { type: 'menu',
+    title: 'form',
+    path: '/form',
+    isLeaf: true,
+    children: [],
+  },
+  { type: 'menu',
+    title: 'modal',
+    path: '/modal',
+    isLeaf: true,
+    children: [],
   }
 ]);
 const openMenus = ref([]); // 열려있는 메뉴들

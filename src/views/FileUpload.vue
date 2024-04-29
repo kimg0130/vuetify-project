@@ -7,7 +7,6 @@ const files = ref(null);
 const imgList = ref([]);
 watch(files, (newVal)=>{
   if(newVal){
-    imgList.value = [];
     for(let i=0; i< newVal.length; i++){
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -18,8 +17,12 @@ watch(files, (newVal)=>{
   }
 });
 
-function deleteThumnail(){
-  imgUrl.value = null;
+function deleteThumnail(idx: number){
+  imgList.value.splice(idx, 1);
+}
+function deleteAll(){
+  imgList.value = [];
+  files.value = null;
 }
 // hook -------------------------------
 onMounted(()=>{
@@ -45,7 +48,7 @@ onUnmounted(()=>{
       이미지만 첨부
     </v-col>
     <v-col cols="6" class="t-a-right">
-      <v-btn>
+      <v-btn @click="deleteAll">
         <v-icon>mdi-trash-can-outline</v-icon>
         전체삭제
       </v-btn>
@@ -57,7 +60,7 @@ onUnmounted(()=>{
            v-for="(file,idx) in imgList"
            :key="idx"
            class="pa-1">
-      <Thumnail :src="file" @click-delete="deleteThumnail()" width="100" height="100"/>
+      <Thumnail :src="file" @click-delete="deleteThumnail(idx)" width="100" height="100"/>
     </v-col>
   </v-row>
 <!--  </v-card>-->
