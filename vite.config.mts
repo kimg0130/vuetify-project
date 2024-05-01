@@ -12,57 +12,64 @@ import { defineConfig } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [
-    VueRouter(),
-    Layouts(),
-    Vue({
-      template: { transformAssetUrls },
-    }),
-    // https://github.com/vuetifyjs/vuetify-loader/tree/master/packages/vite-plugin#readme
-    Vuetify({
-      autoImport: true,
-      styles: {
-        configFile: 'src/styles/settings.scss',
-      },
-    }),
-    Components(),
-    Fonts({
-      google: {
-        families: [ {
-          name: 'Roboto',
-          styles: 'wght@100;300;400;500;700;900',
-        }],
-      },
-    }),
-    AutoImport({
-      imports: [
-        'vue',
-        'vue-router',
-      ],
-      dts: true,
-      eslintrc: {
-        enabled: true,
-      },
-      vueTemplate: true,
-    }),
-  ],
-  define: { 'process.env': {} },
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-    },
-    extensions: [
-      '.js',
-      '.json',
-      '.jsx',
-      '.mjs',
-      '.ts',
-      '.tsx',
-      '.vue',
+export default defineConfig(({mode}) =>
+{
+  return{
+    plugins: [
+      VueRouter(),
+      Layouts(),
+      Vue({
+        template: { transformAssetUrls },
+      }),
+      // https://github.com/vuetifyjs/vuetify-loader/tree/master/packages/vite-plugin#readme
+      Vuetify({
+        autoImport: true,
+        styles: {
+          configFile: 'src/styles/settings.scss',
+        },
+      }),
+      Components(),
+      Fonts({
+        google: {
+          families: [ {
+            name: 'Roboto',
+            styles: 'wght@100;300;400;500;700;900',
+          }],
+        },
+      }),
+      AutoImport({
+        imports: [
+          'vue',
+          'vue-router',
+        ],
+        dts: true,
+        eslintrc: {
+          enabled: true,
+        },
+        vueTemplate: true,
+      }),
     ],
-  },
-  server: {
-    port: 3000,
-  },
+    define: { 'process.env': {} },
+    build:{
+        sourcemap: mode !== "prod",
+        minify: mode !== "prod" ? false : "esbuild",
+    },
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
+      },
+      extensions: [
+        '.js',
+        '.json',
+        '.jsx',
+        '.mjs',
+        '.ts',
+        '.tsx',
+        '.vue',
+      ],
+    },
+    server: {
+      port: 3000,
+    },
+  }
 })

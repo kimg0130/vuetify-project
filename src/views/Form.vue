@@ -1,13 +1,11 @@
 <script lang="ts" setup="">
 // import -------------------------
-import {ref, onMounted, onUnmounted} from "vue"
+import {onMounted, onUnmounted} from "vue"
 import {ModalsContainer} from "vue-final-modal"
 // variabled ------------------------
-const foo = ref<string>("foo")
+
 // function --------------------------
-function bar() {
-  console.log("bar")
-}
+
 // hook -------------------------------
 onMounted(() => {
   console.log("mounted")
